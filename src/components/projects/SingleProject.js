@@ -21,13 +21,6 @@ function SingleProject(props) {
         setProject(props.project.find((project) => project.id === projectID));
     });
 
-
-
-    function useForceUpdate() {
-        let [value, setState] = useState(true);
-        return () => setState(!value);
-      }
-
     const handleNavigation = () => {
        let totalProjects = props.project.length.toString();
        let currentID = project.id;
@@ -46,7 +39,7 @@ function SingleProject(props) {
         <div className="container single-project">
         <HomeButton />
             <div className="row projects-header">
-                <img onClick={useForceUpdate()} className="header-projects" src={"/img" + project.headingImg} alt=""/>
+                <img className="header-projects" src={"/img" + project.headingImg} alt=""/>
                 <div className="col s12 react-header-title"><h2>{project.title}</h2></div>
             </div>
             
