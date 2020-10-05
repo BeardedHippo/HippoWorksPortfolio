@@ -1,4 +1,4 @@
-import React, {useState} from 'react'
+import React, {useEffect} from 'react'
 import ProjectList from './ProjectList'
 import HomeButton from '../navigation/HomeButton'
 
@@ -6,15 +6,23 @@ function VueProjects(props) {
 
     const {projects} = props;
 
+    // useEffect(() => {
+    //     let el= document.getElementById('fader')
+  
+    //         if (el) {
+    //             el.style.opacity = '1'
+    //         }
+    // },[])
+    
     return (
         <div className="container">
             <HomeButton />
-            
+        
             <div className="row projects-header">
                 <img className="header-projects" src="/img/workspace.png" alt=""/>
                 <div className="col s12 react-header-title"><h2>Vue projecten</h2></div>
             </div>
-
+            
             <div className="row page">
                 <div className="col s12">
                     <p className="flow-text">

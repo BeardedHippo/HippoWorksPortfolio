@@ -21,6 +21,14 @@ function SingleProject(props) {
         setProject(props.project.find((project) => project.id === projectID));
     });
 
+    // useEffect(() => {
+    //     let el= document.getElementById('fader')
+  
+    //         if (el) {
+    //             el.style.opacity = '1'
+    //         }
+    // },[])
+
     const handleNavigation = () => {
        let totalProjects = props.project.length.toString();
        let currentID = project.id;
@@ -34,7 +42,6 @@ function SingleProject(props) {
        }
 
     }
-    
     return (
         <div className="container single-project">
         <HomeButton />

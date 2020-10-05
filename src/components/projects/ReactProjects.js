@@ -1,9 +1,17 @@
-import React, {useState} from 'react'
+import React, {useEffect} from 'react'
 import ProjectList from './ProjectList'
 import HomeButton from '../navigation/HomeButton'
 
 function ReactProjects(props) {
     const {projects} = props;
+
+    // useEffect(() => {
+    //     let el= document.getElementById('fader')
+  
+    //         if (el) {
+    //             el.style.opacity = '1'
+    //         }
+    // },[])
 
     return (
         <div className="container">

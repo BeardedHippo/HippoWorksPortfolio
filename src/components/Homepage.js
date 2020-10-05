@@ -1,10 +1,19 @@
-import React, {useState} from 'react'
+import React, {useState, useEffect} from 'react'
 import { Link } from 'react-router-dom';
 
 function Homepage(props) {
 
     const handleScroll = () => {
-        let targetEl = document.getElementsByClassName('content-container')[0].offsetTop;
+        
+        let navDisplay; 
+
+        if (window.innerWidth <= 1280) {
+            navDisplay = 0
+        } else {
+            navDisplay = 50
+        }
+
+        let targetEl = document.getElementsByClassName('content-container')[0].offsetTop - navDisplay;
         let scrollPosition = window.scrollY;
         let newPosition = window.scrollY;
         let elThreshold = targetEl - ( (targetEl - scrollPosition) / 2);
@@ -38,8 +47,16 @@ function Homepage(props) {
 
     }
 
+    // useEffect(() => {
+    //       let el= document.getElementById('fader')
+  
+    //         if (el) {
+    //             el.style.opacity = '1'
+    //         }
+    // },[])
+
     return (
-        <div className="container homepage">
+        <div className="container homepage" >
             <div className="row frontpage">
                    <Link to="/"> <img className="web-logo" src="/img/logo_hippoworks_notext.png" alt="Een ontschuldig hoofd van een paarse nijlpaard met een oranje baard. Dit is het logo van HippoWorks."/></Link>
                     

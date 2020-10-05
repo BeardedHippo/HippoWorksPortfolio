@@ -1,3 +1,22 @@
+/* #loader {
+  width: 100%;
+  height: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: -1000;
+}
+
+.loader-content {
+  width: 200px;
+  margin: 150px auto;
+}
+
+#fader {
+  opacity: 0;
+  transition: opacity 1s ease;
+} */
+
 html, body, .homepage, .frontpage, .App, #root {
   min-height: 100%;
   height: 100%;
@@ -222,6 +241,44 @@ nav {
   border-top-right-radius: 100px;
   border-bottom-right-radius: 100px;
 }
+
+/* ------------------------------------------------------------------- */
+
+/* Top navigation  */
+.top-bar {
+  width: 100%;
+  height: 50px;
+  position: fixed;
+  top: 0;
+  left: 0;
+  background-color: white;
+  -webkit-box-shadow: 0px 4px 6px 0px rgba(0,0,0,0.25);
+  -moz-box-shadow: 0px 4px 6px 0px rgba(0,0,0,0.25);
+  box-shadow: 0px 4px 6px 0px rgba(0,0,0,0.25);
+  z-index: 999999;
+  font-family: 'Nunito', sans-serif;
+  border-top: #d1784a 4px solid;
+}
+
+.top-bar ul {
+  padding: 0 0 0 50px;
+  margin: 0;
+}
+
+.top-bar ul li {
+  display: inline-block;
+  padding: 12px 40px 12px 40px;
+  cursor: pointer;
+  transition: background-color 0.35s ease;
+  color: #5a4d9b;
+}
+
+.top-bar ul li:hover, .top-bar ul .active li {
+  background-color: #d1784a;
+  color: white;
+}
+
+
 /* ------------------------------------------------------------------- */
 
 /* Homepage styling  */
@@ -385,6 +442,7 @@ cursor: pointer;
   padding: 0;
   position: relative;
   border-bottom: #5a4d9b 7px solid;
+  margin-top: 50px;
 }
 
 .projects-header img{
@@ -575,6 +633,43 @@ cursor: pointer;
 }
 
 /* ------------------------------------------------------------------- */
+/* Contact  */
+
+.contact-container .page .col ul {
+  padding-left: 0!important;
+  margin-top: 30px;
+}
+
+.contact-container h1 {
+  text-align: left;
+}
+
+.contact-container .projects-header {
+  height: 150px;
+  border: none;
+}
+
+.contact-container .projects-header img {
+  object-position: bottom;
+}
+
+.contact-container .connect-list ul li {
+  list-style: none!important;
+  position: relative;
+}
+
+.contact-container .connect-list ul li span {
+  position: absolute;
+  top: 20px;
+}
+
+.contact-container .connect-list ul li img {
+  float: none;
+  width: 60px;
+  height: 60px;
+}
+
+/* ------------------------------------------------------------------- */
 /* Media Queries  */
 
 @media screen and (min-width: 1280px) {
@@ -590,9 +685,10 @@ cursor: pointer;
     padding: 0 25%;
   }
 
-    .frontpage {
-      padding: 50px 25% 0 25%;
-    }
+  .frontpage {
+    padding: 100px 25% 0 25%;
+  }
+
   .timeline  {
     margin-bottom: 10px;
   }
@@ -700,6 +796,15 @@ cursor: pointer;
 
   .sidenav-trigger {
     bottom: 40px;
+    display: none;
+  }
+
+  .top-bar {
+    display: visible;
+  }
+
+  .home-button-link {
+    display: none;
   }
 
   .down-button img {
@@ -755,6 +860,10 @@ cursor: pointer;
   }
 } */
 @media screen and (max-width: 1280px) {
+
+  .projects-header {
+    margin-top: 0;
+  }
   .footer {
     background-image: url('/img/hippocar_lowres.png');
     background-position: right top;
@@ -797,8 +906,19 @@ cursor: pointer;
   float: right!important;
 }
 
+.sidenav-trigger {
+  display: visible;
 }
 
+.top-bar {
+  display: none;
+}
+
+.home-button-link {
+  display: visible;
+}
+
+}
 
 
 @media screen and (max-width: 1000px) {

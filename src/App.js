@@ -1,17 +1,21 @@
 import React, { useEffect, useState } from 'react'
 import { BrowserRouter, Switch, Route } from 'react-router-dom'
+import Loader from './components/Loader'
 import Homepage from './components/Homepage'
-import NavBar from './components/navigation/NavBar'
+import NavBarSide from './components/navigation/NavBarSide'
+import NavBarTop from './components/navigation/NavBarTop'
+import ScrollToTop from './components/navigation/ScrollToTop'
 import ReactProjects from './components/projects/ReactProjects'
 import VueProjects from './components/projects/VueProjects'
-import CmsProjects from './components/projects/CmsProjects'
+import OverigProjects from './components/projects/OverigProjects'
+import Contact from './components/Contact'
 import M from 'materialize-css/dist/js/materialize.min.js'
 import SingleProject from './components/projects/SingleProject'
 
 
 function App() {
   
-  const [reactProjects, setReactProjects] = useState([
+const [reactProjects, setReactProjects] = useState([
     {
         title: 'Marioplan',
         summarySmall: 'Dit is een to-do app met een Firebase back-end en redux state management.',
@@ -59,6 +63,47 @@ const [vueProjects, setVueProjects] = useState([
   }
 ]);
 
+
+const [overigProjects, setOverigProjects] = useState([
+  {
+      title: 'The Roselles',
+      summarySmall: 'Website voor The Roselles in een eigen CMS.',
+      summaryMid: 'Tijdens de pre-minor van de minor "The Next Web" wilde ik voor mijzelf ontdekken of PHP een leuke programmeertaal is. Ik heb namelijk al veel met WordPress gewerkt waardoor ik al de basisbegrip van PHP begreep...',
+      summaryBig: 'Tijdens de pre-minor van de minor "The Next Web" wilde ik voor mijzelf ontdekken of PHP een leuke programmeertaal is. Ik heb namelijk al veel met WordPress gewerkt waardoor ik al de basisbegrip van PHP begreep. Maar ik heb nog nooit its groter opgepakt.',
+      description: 'Tijdens de pre-minor van de minor "The Next Web" wilde ik voor mijzelf ontdekken of PHP een leuke programmeertaal is. Ik heb namelijk al veel met WordPress gewerkt waardoor ik al de basisbegrip van PHP begreep. Maar ik heb nog nooit its groter opgepakt. Dit semester ging ik het groter aanpakken. Ik ging een eigen CMS bouwen met alle kernonderdelen van een CMS.',
+      description2: 'Voor het ontwikkelen van dit CMS heb ik meerdere Youtube tutorials gevolgd dat er goed en gestructureerd uitzag. Hier leerde ik ook voor het eerst om gestructureerd met mijn code om te gaan en om in functies te denken. Ik leerde om zoveel mogelijk in variabelen en verbanden te coderen en niet alles expliciet neer te zetten. De code dynamisch houden. Minder code schrijven. Etc. naast de tutorials had ik begeleiding van een docent en een ouderejaars die erg veel van PHP af wist. En tijdens zijn code review had hij verder niks op te merken.',
+      description3: 'Ik kan geen demo-login realiseren, aangezien dit een live website is, maar ik kan hier wel een opsomming van functionaliteiten geven. Een unieke en moderne hash methode dat héél veel moeite nodig heeft om doorheen te breken, slider, image gallery, contentpaginas, contactformulier. De inhoud van ieder onderdeel is ook aan te passen, te verwijderen en aan te vullen door middel van het administratiepaneel.',
+      platform: 'overig',
+      liveLink: 'http://theroselles.nl/',
+      images: ["/overig/roselles_homepage.png","/overig/roselles_images.png","/overig/roselles_contact.png","/overig/roselles_login_page.png","/overig/roselles_gallerij_uploader.png","/overig/roselles_slider_updater.png","/overig/roselles_slide_2.png","/overig/roselles_deleter.png","/overig/roselles_deleter_2.png","/overig/roselles_text_updater.png"],
+      headingImg: '/overig/roselles_homepage.png',
+      id: '1'
+  }
+]);
+
+
+console.log(overigProjects)
+// const [loadState, setLoadState] = useState(false)
+
+// const loadHandler = () => {
+//   let el= document.getElementById('fader')
+  
+//   if (el) {
+//     el.style.opacity = '1'
+//   }
+  
+//   setLoadState(true)
+// }
+
+// const resetLoadHandler = () => {
+//   setLoadState(false)
+// }
+
+// const showLoader = () => {
+//   if(loadState === false) {
+//     return <Loader />
+//   }
+// }
   useEffect(() => {
 
     var elem = document.querySelector(".sidenav");
@@ -82,15 +127,19 @@ const [vueProjects, setVueProjects] = useState([
   return (
     <BrowserRouter>
       <div className="App">
-
-        <NavBar />
+        {/* {showLoader()} */}
+        <NavBarTop />
+        <NavBarSide />
+        <ScrollToTop />
         <Switch>
-            <Route exact path='/' component={Homepage}/>
+            <Route exact path='/'><Homepage /></Route>
             <Route exact path='/react'><ReactProjects projects={reactProjects} /></Route>
             <Route exact path='/vue'><VueProjects projects={vueProjects} /></Route>
-            <Route exact path='/cms'><CmsProjects /></Route>
-            <Route path='/react/projecten/:id' render={routeProps=><SingleProject {...routeProps} project={reactProjects}/>}  />
-            <Route path='/vue/projecten/:id' render={routeProps=><SingleProject {...routeProps} project={vueProjects}/>}  />
+            <Route exact path='/overig'><OverigProjects projects={overigProjects}/></Route>
+            <Route exact path='/contact'><Contact /></Route>
+            <Route path='/react/projecten/:id' render={routeProps=><SingleProject {...routeProps} project={reactProjects} />}  />
+            <Route path='/vue/projecten/:id' render={routeProps=><SingleProject {...routeProps} project={vueProjects} />} />
+            <Route path='/overig/projecten/:id' render={routeProps=><SingleProject {...routeProps} project={overigProjects} />} />
           </Switch>
       </div>
     </BrowserRouter>
